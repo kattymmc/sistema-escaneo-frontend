@@ -1,0 +1,104 @@
+h1 {
+    font-size: 40px;
+    font-family: 'Source Sans Pro',sans-serif;
+    line-height: 1.15;
+    color: #354256;
+    font-weight: 700;
+}
+  
+p {
+    color: #b3b3b3;
+    font-size: 20px; 
+}
+  
+.content {
+    padding: 10% 0; 
+}
+  
+.content .contents .form-group, .content .bg .form-group {
+    position: relative; 
+}
+
+.content .contents .form-group input, .content .bg .form-group input {
+    background: transparent;
+    border-bottom: 1px solid #ccc; 
+}
+
+.content .contents .form-control, .content .bg .form-control {
+    border: none;
+    padding: 0;
+    border-radius: 0; 
+}
+
+.content .contents .form-control:active, .content .contents .form-control:focus, .content .bg .form-control:active, .content .bg .form-control:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; 
+}
+
+::placeholder {
+    color: #b3b3b3;
+    font-size: 17px;
+}
+     
+.btn {
+    height: 54px;
+    padding-left: 30px;
+    padding-right: 30px; 
+    color: white;
+    background-color: #FF806D;
+}
+
+.btn-icon {
+    background-color: #FF806D;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #FF806D;
+    margin-bottom: 5%;
+}
+
+.btn-icon:hover {
+    background-color: #df5c48;
+    border-color: #df5c48;
+}
+
+.icon-reg {
+    width: 20px;
+}
+
+.btn-customer {
+    border-radius: 50px;
+    font-size: 18px;
+}
+
+.btn-customer:hover {
+    background-color: #df5c48;
+}
+
+@media (max-width: 575.98px){
+
+    .row {
+        margin: 10% 0%;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+      
+    p {
+        font-size: 16px; 
+    }
+
+    ::placeholder {
+        font-size: 14px;
+    }
+    
+}
+
+  
+  
+  
+
+  

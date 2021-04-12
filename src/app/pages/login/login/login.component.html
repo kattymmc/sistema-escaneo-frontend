@@ -1,0 +1,35 @@
+<section>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 order-md-2">
+                    <img src="./assets/img/login.png" alt="image" class="img-fluid">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <button [routerLink]="['']" class="btn-icon">
+                                    <img src="./assets/icon/icon-reg.png" alt="regresar" class="icon-reg">
+                                </button>
+                                <h1>Bienvenido</h1>
+                                <p class="mb-4">Sistema de Gestión de Documentos</p>
+                            </div>
+                            <form>
+                                <div class="form-group first">
+                                    <input placeholder="Username" type="text" class="form-control" id="username">
+
+                                </div>
+                                <div class="form-group last mb-4">
+                                    <input placeholder="Password" type="password" class="form-control" id="password">
+
+                                </div>
+                                <button class="btn btn-customer btn-block" [routerLink]="['']"> Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

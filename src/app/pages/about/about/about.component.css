@@ -1,0 +1,82 @@
+section {
+  margin: 8%;
+}
+
+h1 {
+  font-size: 40px;
+  font-family: 'Source Sans Pro',sans-serif;
+  line-height: 1.15;
+  color: #354256;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 20px;
+  color: #354256;
+}
+  
+p {
+  font-size: 20px;
+  color: #354256;
+}
+
+.award-img {
+    height: 60px;
+    margin-bottom: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background: #eff0f3;
+}
+  
+.award-img {
+    height: 120px;
+    margin-bottom: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.divider {
+  width: 40px;
+  height: 5px;
+  background: #FF806D;
+}
+
+.card {
+  width: 50%;
+  margin: 10%;
+}
+
+.hover-shadow {
+  transition: .3s ease;
+}
+  
+.hover-shadow:hover {
+  box-shadow: 0px 4px 25px 0px rgba(27, 39, 71, 0.15);
+}
+    
+@media (max-width: 575.98px){
+  h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  section {
+    margin: 15%;
+  }
+
+  .divider {
+    margin-left: 40%;
+  }
+  
+  .card {
+    margin: 0% 20%;
+  }
+
+}

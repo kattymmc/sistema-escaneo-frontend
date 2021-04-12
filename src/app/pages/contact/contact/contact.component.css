@@ -1,0 +1,133 @@
+
+.contact-section {
+	padding-top: 75px;
+	padding-bottom: 20px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.contact-title {
+	margin-bottom: 30px;
+}
+
+.contact-title h4 {
+	color: #252525;
+	font-weight: 700;
+	margin-bottom: 16px;
+}
+
+.contact-widget .cw-item {
+	background: #ffffff;
+	margin-bottom: 11px;
+	-webkit-box-shadow: 0px 8px 35px 10px #E8E8E8;
+	box-shadow: 0px 8px 35px 10px #E8E8E8;
+	padding-left: 25px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-radius: 10px;
+}
+
+.contact-widget .cw-item .ci-icon {
+	float: left;
+	margin-top: 12px;
+}
+
+.contact-widget .cw-item .ci-text {
+	display: table;
+}
+
+.contact-widget .cw-item .ci-text span {
+	color: #b2b2b2;
+	font-size: 16px;
+}
+
+.contact-widget .cw-item .ci-text p {
+	font-size: 18px;
+	color: #252525;
+	margin-bottom: 0;
+}
+
+.contact-form .leave-comment h4 {
+	color: #292f3b;
+	font-weight: 700;
+	margin-bottom: 5%;
+}
+
+.contact-form .leave-comment p {
+	margin-bottom: 30px;
+}
+
+.contact-form .leave-comment .comment-form input {
+	width: 100%;
+	font-size: 16px;
+	color: #636363;
+	height: 50px;
+	border: 1px solid #ebebeb;
+	border-radius: 5px;
+	padding-left: 20px;
+	margin-bottom: 30px;
+}
+
+.contact-form .leave-comment .comment-form textarea {
+	width: 100%;
+	resize: none;
+	font-size: 16px;
+	color: #636363;
+	height: 150px;
+	border: 1px solid #ebebeb;
+	border-radius: 5px;
+	padding-left: 20px;
+	padding-top: 10px;
+	margin-bottom: 35px;
+}
+
+.contact-form .leave-comment .comment-form .site-btn {
+	padding: 13px 35px 11px;
+}
+
+.site-btn {
+	color: #ffffff;
+	background: #FF806D;
+	border: 1px solid #FF806D;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 13px 45px 11px;
+	cursor: pointer;
+	border-radius: 50px;
+	font-size: 18px;
+}
+
+.img-mapa {
+	margin-top: 5%;
+    width: 80%;
+}
+
+.container-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 575.98px){
+    .img-mapa {
+		margin-top: 15%;
+        width: 100%;
+    }
+
+	p {
+		font-size: 15px;
+	}
+
+	.contact-widget {
+		margin-bottom: 25%;
+	}
+
+	.contact-widget .cw-item .ci-text p {
+		font-size: 15px;
+	}
+
+	.contact-widget .cw-item .ci-text span {
+		color: #b2b2b2;
+		font-size: 14px;
+	}
+
+}
