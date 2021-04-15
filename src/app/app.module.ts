@@ -1,14 +1,15 @@
-import { LoginModule } from './pages/login/login.module';
-import { ContactModule } from './pages/contact/contact.module';
+import { SidebarModule } from './shared/sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
-import { HomeModule } from './pages/home/home.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './shared/header/header.module';
-import { AboutModule } from './pages/about/about.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import { AboutModule } from './pages/about/about.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule,
-    AboutModule,
-    LoginModule,
-    ContactModule,
+    FormsModule,
     HeaderModule,
-    FooterModule
+    SidebarModule,
+    FooterModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

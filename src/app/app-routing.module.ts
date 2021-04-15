@@ -29,6 +29,11 @@ const routes: Routes = [
       import('./pages/login/login.module').then((m) => m.LoginModule),
   },
   {
+    path: 'documentos', 
+    loadChildren: () => 
+      import('./pages/document/document.module').then((m) => m.DocumentModule),
+  },
+  {
     path: '**', 
     redirectTo: '/', 
     pathMatch: 'full'
