@@ -1,3 +1,4 @@
+import { ListDocumentComponent } from './pages/document/list-document/list-document.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
@@ -30,8 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'documentos', 
-    loadChildren: () => 
-      import('./pages/document/document.module').then((m) => m.DocumentModule),
+    component: ListDocumentComponent,
   },
   {
     path: '**', 
