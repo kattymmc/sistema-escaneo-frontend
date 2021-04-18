@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Amarante');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
+
+h1 { 
+    font-family: 'Amarante', Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    line-height: 1.7em;
+    margin: 5%;
+    text-align: center;
+}
+
+.card {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 10%;
+}
+
+.btn {
+    width: 100px;
+    color: white;
+    background-color: #FF806D;
+}
+
+.btn-customer {
+    border-radius: 10px;
+}
+
+.btn-customer:hover {
+    background-color: #ffffff;
+    color: #FF806D;
+    border: 1px solid #FF806D;
+}

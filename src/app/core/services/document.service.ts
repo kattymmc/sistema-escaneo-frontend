@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Documento } from '../models/documento'; 
-import { map } from 'rxjs/operators'
+import { Documento } from '../models/documento';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,23 @@ export class DocumentService {
   constructor(private _http: HttpClient) { }
 
   getDocumentos(token): Observable<any>{
-    let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                   .set('Authorization', token);
-    return this._http.get(this.urlEndPoint+'documentos', {headers: headers});
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.urlEndPoint +'documentos', {headers: headers});
+  }
+
+  getDocumentoById(token, id: number): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.urlEndPoint +`documentos/${id}`, {headers: headers});
+  }
+
+  updateDocumento(token, id: number, documento: Documento): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.put(this.urlEndPoint +`documentos/${id}`, {headers: headers});
+  }
+
+  deleteDocumentoById(token, id: number): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.delete(this.urlEndPoint +`documentos/${id}`, {headers: headers});
   }
 
 }

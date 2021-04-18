@@ -9,7 +9,7 @@ import { JwtDTO } from '../models/jwt-dto';
 })
 export class AuthService {
 
-  authURL = 'http://localhost:8080/api/';
+  authURL = 'http://169.57.99.220:32135/api/';
 
   constructor(private httpClient: HttpClient) { }
 

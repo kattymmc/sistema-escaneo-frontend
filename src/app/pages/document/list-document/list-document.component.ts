@@ -2,6 +2,7 @@ import { DocumentService } from './../../../core/services/document.service';
 import { Documento } from './../../../core/models/documento';
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/core/services/token.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-document',
@@ -14,20 +15,37 @@ export class ListDocumentComponent implements OnInit {
 
   constructor(
     private documentoService: DocumentService,
+    private toastr: ToastrService,
     private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
-    this.cargarProductos();
+    this.cargarDocumentos();
   }
 
-  cargarProductos(): void {
-    this.documentoService.getDocumentos(this.tokenService.getToken).subscribe(
+  cargarDocumentos(): void {
+    this.documentoService.getDocumentos(this.tokenService.getToken()).subscribe(
       data => {
         this.documentos = data;
       },
       err => {
         console.log(err);
+      }
+    );
+  }
+
+  eliminarDocumento(id: number) {
+    this.documentoService.deleteDocumentoById(this.tokenService.getToken(),id).subscribe(
+      data => {
+        this.toastr.success('Producto Eliminado', 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.cargarDocumentos();
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
       }
     );
   }

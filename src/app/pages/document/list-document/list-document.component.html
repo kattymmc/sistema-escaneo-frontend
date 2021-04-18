@@ -1,16 +1,31 @@
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Codigo</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Tipo</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let documento of documentos">
-            <td>{{documento.codigoDoc}}</td>
-            <td>{{documento.descripcion}}</td>
-            <!--td>{{documento.tipoDocumento.descripcion}}</td-->
-        </tr>
-    </tbody>
-</table>
+<app-sidebar></app-sidebar>
+<div class="container">
+    <h1>Listado de documentos</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Tipo</th>
+                <th scope="col" class="text-center">Fecha</th>
+                <th scope="col" class="text-center">Ver</th>
+                <th scope="col" class="text-center">Editar</th>
+                <th scope="col" class="text-center">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let documento of documentos">
+                <td class="text-center">{{documento.codigoDoc}}</td>
+                <td>{{documento.descripcion}}</td>
+                <td>{{documento.tipoDocumento.descripcion}}</td>
+                <td>{{documento.dateCreated | date:'shortDate'}}</td>
+                <td><button class="btn btn-outline-primary" [routerLink]="['/documentos/ver',documento.id]"><i
+                            class="far fa-eye"></i> Ver</button></td>
+                <td><button class="btn btn-outline-warning" [routerLink]="['/documentos/editar',documento.id]"><i
+                            class="far fa-edit"></i> Editar</button></td>
+                <td><button class="btn btn-outline-danger" (click)="eliminarDocumento(documento.id)"><i
+                            class="far fa-trash-alt"></i> Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

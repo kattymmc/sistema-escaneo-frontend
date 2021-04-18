@@ -1,0 +1,21 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+    <h1>Detalle de documento</h1>
+    <div class="row mt-8" *ngIf="documento">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Codigo: </b>{{documento.codigoDoc}}</li>
+                    <li class="list-group-item"><b>Descripcion: </b>{{documento.descripcion}}</li>
+                    <li class="list-group-item"><b>Tipo: </b>{{documento.tipoDocumento.descripcion}}</li>
+                    <li class="list-group-item"><b>Fecha: </b>{{documento.dateCreated | date:'shortDate'}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <button class="btn btn-customer btn-block" [routerLink]="['/documentos/listar']"><i
+                    class="fas fa-arrow-alt-circle-left"></i>
+                Volver</button>
+        </div>
+    </div>
+</div>

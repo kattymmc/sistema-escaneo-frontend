@@ -1,3 +1,4 @@
+import { DocumentModule } from './pages/document/document.module';
 import { SidebarModule } from './shared/sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,19 +11,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListDocumentComponent } from './pages/document/list-document/list-document.component';
-import { EditarDocumentComponent } from './pages/document/editar-document/editar-document.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ListDocumentComponent,
-    EditarDocumentComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
+    DocumentModule,
     HeaderModule,
     SidebarModule,
     FooterModule,
