@@ -7,10 +7,9 @@ export class Documento {
     dateCreated: Date;
     tipoDocumento: TipoDocumento;
     
-    constructor(codigoDoc: string, descripcion: string, tipoDocumento: TipoDocumento, dateCreated: Date){
+    constructor(codigoDoc: string, descripcion: string, tipoDocumento: TipoDocumento){
         this.codigoDoc = codigoDoc;
         this.descripcion = descripcion;
-        this.tipoDocumento = tipoDocumento;
-        this.dateCreated = dateCreated;
+        this.tipoDocumento = tipoDocumento
     }
 }

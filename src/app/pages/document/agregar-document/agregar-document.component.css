@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Amarante");
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap");
+
+h1 {
+  font-family: "Amarante", Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1.7em;
+  margin-top: 5%;
+  text-align: center;
+}
+
+.container {
+  font-family: "Roboto", sans-serif;
+}
+
+.space {
+  margin: 5% 0;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: black;
+  padding-top: 20px;
+  border: none;
+  outline: 0px;
+}
+
+.lbl-nombre {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 3px solid #ff806d;
+}
+
+.lbl-nombre:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  transform: translateX(0%);
+  transition: all 0.3s ease;
+}
+
+.text-nomb {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.3s ease;
+  color: rgb(177, 177, 177);
+}
+
+input:focus + .lbl-nombre .text-nomb,
+input:valid + .lbl-nombre .text-nomb {
+  transform: translateY(-150%);
+  font-size: 14px;
+  color: #ff806d;
+}
+
+input:focus + .lbl-nombre:after,
+input:valid + .lbl-nombre:after {
+  transform: translateX(0%);
+}
+
+.btn-customizer {
+  width: 100%;
+}
+
+i {
+  margin-right: 10px;
+}

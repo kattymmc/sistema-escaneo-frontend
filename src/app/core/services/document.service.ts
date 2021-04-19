@@ -12,6 +12,12 @@ export class DocumentService {
 
   constructor(private _http: HttpClient) { }
 
+  addDocumento(token, documento: Documento): Observable<any> {
+    let params = JSON.stringify(documento);
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.post(this.urlEndPoint +'documentos', params, {headers: headers});
+  }
+
   getDocumentos(token): Observable<any>{
     let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this._http.get(this.urlEndPoint +'documentos', {headers: headers});

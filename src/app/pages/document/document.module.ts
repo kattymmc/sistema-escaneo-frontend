@@ -6,13 +6,15 @@ import { CommonModule } from '@angular/common';
 import { DocumentRoutingModule } from './document-routing.module';
 import { SidebarModule } from 'src/app/shared/sidebar/sidebar.module';
 import { FormsModule } from '@angular/forms';
+import { AgregarDocumentComponent } from './agregar-document/agregar-document.component';
 
 
 @NgModule({
   declarations: [
     EditarDocumentComponent,
     VerDocumentComponent,
-    ListDocumentComponent
+    ListDocumentComponent,
+    AgregarDocumentComponent
   ],
   imports: [
     CommonModule,
