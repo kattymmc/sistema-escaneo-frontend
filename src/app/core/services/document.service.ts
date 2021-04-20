@@ -41,9 +41,9 @@ export class DocumentService {
     return this._http.delete(this.urlEndPoint + `documentos/${id}`, { headers: headers });
   }
 
-  searchDocumentByCod(token, codigoDoc: string): Observable<any> {
+  getTipoDocumentos(token): Observable<any> {
     let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this._http.get(this.urlEndPoint + `documentos/filtrar/${codigoDoc}`, { headers: headers });
+    return this._http.get(this.urlEndPoint + 'tipo-documento', { headers: headers });
   }
 
 }

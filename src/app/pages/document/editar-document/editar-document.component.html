@@ -1,23 +1,64 @@
 <app-sidebar></app-sidebar>
 <div class="container" *ngIf="documento">
-    <div class="row mt-5">
-        <div class="col-md-4 mx-auto">
-            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
-                <div class="form-group">
-                    <label for="nombre">Codigo</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="documento.codigoDoc"
-                        required>
-                </div>
-                <div class="form-group">
-                    <label for="precio">Descripcion</label>
-                    <input type="text" class="form-control" id="precio" name="precio"
-                        [(ngModel)]="documento.descripcion" required>
-                </div>
-                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
-                    <i class="fas fa-pencil-alt"></i> Actualizar</button>
-                <button class="btn btn-outline-primary btn-block" [routerLink]="['/documentos/listar']">
-                    <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
-            </form>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div class="title-area text-dark">
+                <h1 class="font-primary">Agregar Documento</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
+            <div class="form-area p-lg-4 p-3">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                    <div class="row space">
+                        <div class="col-md-12">
+                            <div class="form-group first">
+                                <input type="text" id="codigoDoc" name="codigoDoc" [(ngModel)]="documento.codigoDoc"
+                                    required>
+                                <label class="lbl-nombre">
+                                    <span class="text-nomb">Código:</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row space">
+                        <div class="col-md-12">
+                            <div class="form-group first">
+                                <input type="text" id="descripcion" name="descripcion"
+                                    [(ngModel)]="documento.descripcion" required>
+                                <label class="lbl-nombre">
+                                    <span class="text-nomb">Descripción:</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--div class="row space">
+                        <div class="col-md-6">
+                            <label>
+                                <span class="text-nomb">Tipo de Documento:</span>
+                            </label>
+                        </div>
+                        <div class="col-md-6 content-select">
+                            <select name="tipoDocumento" [(ngModel)]="seleccionado">
+                                <option [ngValue]="tipodocumento.id" *ngFor="let tipodocumento of tipodocumentos">
+                                    {{tipodocumento.descripcion}}</option>
+                            </select>
+                        </div>
+                    </div-->
+                    <div class="row space">
+                        <div class="col-md-3">
+                            <button class="btn btn-danger text-light btn-customizer"
+                                [routerLink]="['/documentos/listar']"><i
+                                    class="fas fa-arrow-alt-circle-left"></i>Cancelar</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-success text-light btn-customizer" [disabled]="!f.valid"><i
+                                    class="fas fa-save"></i>Actualizar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

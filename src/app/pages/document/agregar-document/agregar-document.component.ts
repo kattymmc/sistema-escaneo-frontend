@@ -13,26 +13,25 @@ import { TokenService } from 'src/app/core/services/token.service';
 })
 export class AgregarDocumentComponent implements OnInit {
 
-  public documento: Documento;
-  /*codigoDoc: string = '';
+  public tipodocumentos: TipoDocumento[];
+  codigoDoc: string = '';
   descripcion: string = '';
-  seleccionado: number;*/
+  seleccionado: number;
 
   constructor(
     private tokenService: TokenService,
     private toastr: ToastrService,
     private router: Router,
     private documentoService: DocumentService
-  ) {
-    this.documento = new Documento("", "", new TipoDocumento(""));
-  }
+  ) { }
 
   ngOnInit(): void {
+    this.cargarTipoDocumentos();
   }
 
   onCreate(): void {
-    //const documento = new Documento(this.codigoDoc, this.descripcion, new TipoDocumento(this.seleccionado));
-    this.documentoService.addDocumento(this.tokenService.getToken(), this.documento).subscribe(
+    const documento = new Documento(this.codigoDoc, this.descripcion, new TipoDocumento(this.seleccionado));
+    this.documentoService.addDocumento(this.tokenService.getToken(), documento).subscribe(
       data => {
         this.toastr.success('Documento Creado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
@@ -44,6 +43,17 @@ export class AgregarDocumentComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
         // this.router.navigate(['/']);
+      }
+    );
+  }
+
+  cargarTipoDocumentos(): void {
+    this.documentoService.getTipoDocumentos(this.tokenService.getToken()).subscribe(
+      data => {
+        this.tipodocumentos = data;
+      },
+      err => {
+        console.log(err);
       }
     );
   }
