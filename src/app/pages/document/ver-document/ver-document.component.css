@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Amarante');
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
 
-h1 { 
+h1 {
     font-family: 'Amarante', Tahoma, sans-serif;
     font-weight: bold;
     font-size: 2em;
@@ -16,7 +16,7 @@ h1 {
     margin-bottom: 10%;
 }
 
-.btn {
+.btn-customer{
     width: 100px;
     color: white;
     background-color: #FF806D;

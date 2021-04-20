@@ -14,7 +14,8 @@ export class DocumentService {
 
   addDocumento(token, documento: Documento): Observable<any> {
     let params = JSON.stringify(documento);
-    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                   .set('Authorization', `Bearer ${token}`);
     return this._http.post(this.urlEndPoint +'documentos', params, {headers: headers});
   }
 
@@ -29,8 +30,10 @@ export class DocumentService {
   }
 
   updateDocumento(token, id: number, documento: Documento): Observable<any> {
-    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this._http.put(this.urlEndPoint +`documentos/${id}`, {headers: headers});
+    let params = JSON.stringify(documento);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                   .set('Authorization', `Bearer ${token}`);
+    return this._http.put(this.urlEndPoint +`documentos/${id}`, params, {headers: headers});
   }
 
   deleteDocumentoById(token, id: number): Observable<any> {

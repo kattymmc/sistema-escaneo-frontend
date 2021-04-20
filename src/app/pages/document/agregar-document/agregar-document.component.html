@@ -47,7 +47,7 @@
                         </div>
                         <div class="row space">
                             <div class="col-md-6">
-                                <button class="btn btn-primary text-light">Subir imagen</button>
+                                <input type="file" placeholder="Subir imagenes" accept="image/*" (change)="fileChangeEvent($event)" multiple>
                             </div>
                             <div class="col-md-3">
                                 <button class="btn btn-danger text-light btn-customizer"
