@@ -5,5 +5,8 @@ export class TipoDocumento {
     constructor(descripcion: string) {
         this.descripcion = descripcion;
     }
+    /*constructor(id: number) {
+        this.id = id;
+    }*/
 
 }

@@ -14,28 +14,36 @@ export class DocumentService {
 
   addDocumento(token, documento: Documento): Observable<any> {
     let params = JSON.stringify(documento);
-    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this._http.post(this.urlEndPoint +'documentos', params, {headers: headers});
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${token}`);
+    return this._http.post(this.urlEndPoint + 'documentos', params, { headers: headers });
   }
 
-  getDocumentos(token): Observable<any>{
+  getDocumentos(token): Observable<any> {
     let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this._http.get(this.urlEndPoint +'documentos', {headers: headers});
+    return this._http.get(this.urlEndPoint + 'documentos', { headers: headers });
   }
 
   getDocumentoById(token, id: number): Observable<any> {
     let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this._http.get(this.urlEndPoint +`documentos/${id}`, {headers: headers});
+    return this._http.get(this.urlEndPoint + `documentos/${id}`, { headers: headers });
   }
 
   updateDocumento(token, id: number, documento: Documento): Observable<any> {
-    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this._http.put(this.urlEndPoint +`documentos/${id}`, {headers: headers});
+    let params = JSON.stringify(documento);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${token}`);
+    return this._http.put(this.urlEndPoint + `documentos/${id}`, params, { headers: headers });
   }
 
   deleteDocumentoById(token, id: number): Observable<any> {
     let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this._http.delete(this.urlEndPoint +`documentos/${id}`, {headers: headers});
+    return this._http.delete(this.urlEndPoint + `documentos/${id}`, { headers: headers });
+  }
+
+  searchDocumentByCod(token, codigoDoc: string): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.urlEndPoint + `documentos/filtrar/${codigoDoc}`, { headers: headers });
   }
 
 }

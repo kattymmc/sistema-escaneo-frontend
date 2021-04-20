@@ -37,7 +37,12 @@
                         <div class="row space">
                             <div class="col-md-12">
                                 <div class="form-group first">
-                                    <input type="text" type="text" id="tipoDocumento" name="tipoDocumento"
+                                    <!--select name="tipoDocumento" [(ngModel)]="seleccionado">
+                                        <option [ngValue]="0">Seleccionar Tipo</option>
+                                        <option [ngValue]="tipo.id" *ngFor="let tipo of documento.tipoDocumento">
+                                            {{tipo.descripcion}}</option>
+                                    </select-->
+                                    <input type="text" id="tipoDocumento" name="tipoDocumento"
                                         [(ngModel)]="documento.tipoDocumento.descripcion" required>
                                     <label class="lbl-nombre">
                                         <span class="text-nomb">Tipo:</span>

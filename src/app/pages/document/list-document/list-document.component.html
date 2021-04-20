@@ -1,6 +1,16 @@
 <app-sidebar></app-sidebar>
 <div class="container">
     <h1>Listado de documentos</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group first">
+                <input type="text" [(ngModel)]="searchText" autocomplete="off" required />
+                <label class="lbl-nombre">
+                    <span class="text-nomb"><i class="fas fa-search"></i> Buscar Documento</span>
+                </label>
+            </div>
+        </div>
+    </div>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -14,11 +24,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let documento of documentos">
+            <tr *ngFor="let documento of documentos | filter: searchText">
                 <td class="text-center">{{documento.codigoDoc}}</td>
                 <td>{{documento.descripcion}}</td>
                 <td>{{documento.tipoDocumento.descripcion}}</td>
-                <td>{{documento.dateCreated | date:'shortDate'}}</td>
+                <td>{{documento.dateCreated | date: 'dd/MM/yyyy'}}</td>
                 <td><button class="btn btn-outline-primary" [routerLink]="['/documentos/ver',documento.id]"><i
                             class="far fa-eye"></i> Ver</button></td>
                 <td><button class="btn btn-outline-warning" [routerLink]="['/documentos/editar',documento.id]"><i
