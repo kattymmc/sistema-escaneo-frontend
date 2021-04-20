@@ -14,7 +14,10 @@ import { UploadService } from 'src/app/core/services/upload.service';
 })
 export class AgregarDocumentComponent implements OnInit {
 
-  public documento: Documento;
+  public tipodocumentos: TipoDocumento[];
+  codigoDoc: string = '';
+  descripcion: string = '';
+  seleccionado: number;
 
   constructor(
     private tokenService: TokenService,
@@ -23,16 +26,17 @@ export class AgregarDocumentComponent implements OnInit {
     private documentoService: DocumentService,
     private uploadService: UploadService
   ) {
-    this.documento = new Documento("","", new TipoDocumento(""));
+
   }
 
+
   ngOnInit(): void {
+    this.cargarTipoDocumentos();
   }
 
   onCreate(): void {
-    this.documento.tipoDocumento.id = 2;
-    console.log(this.documento)
-    this.documentoService.addDocumento(this.tokenService.getToken(),this.documento).subscribe(
+    const documento = new Documento(this.codigoDoc, this.descripcion, new TipoDocumento(this.seleccionado));
+    this.documentoService.addDocumento(this.tokenService.getToken(), documento).subscribe(
       data => {
         // SUBIDA DE DOCUMENTOS
         console.log(data.documento.id);
@@ -51,7 +55,7 @@ export class AgregarDocumentComponent implements OnInit {
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
         // this.router.navigate(['/']);
       }
@@ -63,5 +67,15 @@ export class AgregarDocumentComponent implements OnInit {
         this.filesToUpload = <Array<File>>fileInput.target.files;
         console.log(this.filesToUpload);
     }
+  cargarTipoDocumentos(): void {
+    this.documentoService.getTipoDocumentos(this.tokenService.getToken()).subscribe(
+      data => {
+        this.tipodocumentos = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
 }

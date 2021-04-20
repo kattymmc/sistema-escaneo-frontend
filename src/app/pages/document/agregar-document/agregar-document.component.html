@@ -15,8 +15,7 @@
                         <div class="row space">
                             <div class="col-md-12">
                                 <div class="form-group first">
-                                    <input type="text" id="codigoDoc" name="codigoDoc" [(ngModel)]="documento.codigoDoc"
-                                        required>
+                                    <input type="text" id="codigoDoc" name="codigoDoc" [(ngModel)]="codigoDoc" required>
                                     <label class="lbl-nombre">
                                         <span class="text-nomb">Código:</span>
                                     </label>
@@ -26,8 +25,8 @@
                         <div class="row space">
                             <div class="col-md-12">
                                 <div class="form-group first">
-                                    <input type="text" id="descripcion" name="descripcion"
-                                        [(ngModel)]="documento.descripcion" required>
+                                    <input type="text" id="descripcion" name="descripcion" [(ngModel)]="descripcion"
+                                        required>
                                     <label class="lbl-nombre">
                                         <span class="text-nomb">Descripción:</span>
                                     </label>
@@ -35,14 +34,16 @@
                             </div>
                         </div>
                         <div class="row space">
-                            <div class="col-md-12">
-                                <div class="form-group first">
-                                    <input type="text" type="text" id="tipoDocumento" name="tipoDocumento"
-                                        [(ngModel)]="documento.tipoDocumento.descripcion" required>
-                                    <label class="lbl-nombre">
-                                        <span class="text-nomb">Tipo:</span>
-                                    </label>
-                                </div>
+                            <div class="col-md-6">
+                                <label>
+                                    <span class="text-nomb">Tipo de Documento:</span>
+                                </label>
+                            </div>
+                            <div class="col-md-6 content-select">
+                                <select name="tipoDocumento" [(ngModel)]="seleccionado">
+                                    <option [ngValue]="tipodocumento.id" *ngFor="let tipodocumento of tipodocumentos">
+                                        {{tipodocumento.descripcion}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row space">

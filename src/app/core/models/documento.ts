@@ -9,7 +9,7 @@ export class Documento {
     tipoDocumento: TipoDocumento;
     imagenes?: Imagen[];
 
-    constructor(codigoDoc: string, descripcion: string, tipoDocumento: TipoDocumento){
+    constructor(codigoDoc: string, descripcion: string, tipoDocumento: TipoDocumento) {
         this.codigoDoc = codigoDoc;
         this.descripcion = descripcion;
         this.tipoDocumento = tipoDocumento

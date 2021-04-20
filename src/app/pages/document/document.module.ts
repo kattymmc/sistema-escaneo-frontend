@@ -7,6 +7,7 @@ import { DocumentRoutingModule } from './document-routing.module';
 import { SidebarModule } from 'src/app/shared/sidebar/sidebar.module';
 import { FormsModule } from '@angular/forms';
 import { AgregarDocumentComponent } from './agregar-document/agregar-document.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AgregarDocumentComponent } from './agregar-document/agregar-document.co
   imports: [
     CommonModule,
     DocumentRoutingModule,
+    Ng2SearchPipeModule,
     SidebarModule,
     FormsModule
   ]
