@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
                 <div class="form-area p-lg-4 p-3">
-                    <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                    <form (ngSubmit)="onCreate()" novalidate #f="ngForm" autocomplete="off">
                         <div class="row space">
                             <div class="col-md-12">
                                 <div class="form-group first">
@@ -47,15 +47,15 @@
                             </div>
                         </div>
                         <div class="row space">
-                            <div class="col-md-6">
-                                <input type="file" placeholder="Subir imagenes" accept="image/*" (change)="fileChangeEvent($event)" multiple>
+                            <div class="col-md-8">
+                                <input type="file" accept="image/*" (change)="fileChangeEvent($event)" multiple>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <button class="btn btn-danger text-light btn-customizer"
                                     [routerLink]="['/documentos/listar']"><i
                                         class="fas fa-arrow-alt-circle-left"></i>Cancelar</button>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <button class="btn btn-success text-light btn-customizer" [disabled]="!f.valid"><i
                                         class="fas fa-save"></i>Guardar</button>
                             </div>

@@ -10,25 +10,43 @@ h1 {
   text-align: center;
 }
 
-.card {
-  font-family: "Roboto", sans-serif;
-  font-size: 15px;
-  margin-bottom: 10%;
-}
-
-.btn-customer{
-    width: 100px;
-    color: white;
-    background-color: #FF806D;
+.btn-customer {
+  width: 100px;
+  color: white;
+  background-color: #ff806d;
 }
 
 .btn-customer {
-  border-radius: 10px;
+  border-radius: 5px;
   margin-left: 15%;
+  margin-top: 5%;
+  margin-bottom: 15%;
 }
 
 .btn-customer:hover {
   background-color: #ffffff;
   color: #ff806d;
   border: 1px solid #ff806d;
+}
+
+.close {
+  opacity: 1;
+}
+
+.close--color {
+  color: #fff;
+}
+
+.card {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  margin-bottom: 10%;
+  padding-left: 0;
+}
+
+.card-img-top {
+  width: 150px;
+  border-color: grey;
+  border-style: solid;
+  border-width: 2px;
 }

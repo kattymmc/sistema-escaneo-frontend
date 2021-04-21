@@ -14,6 +14,7 @@ import { UploadService } from 'src/app/core/services/upload.service';
 })
 export class AgregarDocumentComponent implements OnInit {
 
+  public filesToUpload: Array<File>;
   public tipodocumentos: TipoDocumento[];
   codigoDoc: string = '';
   descripcion: string = '';
@@ -29,7 +30,6 @@ export class AgregarDocumentComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
     this.cargarTipoDocumentos();
   }
@@ -40,18 +40,18 @@ export class AgregarDocumentComponent implements OnInit {
       data => {
         // SUBIDA DE DOCUMENTOS
         console.log(data.documento.id);
-        this.uploadService.addImagenes('documentos/upload',this.filesToUpload,
-            this.tokenService.getToken(), 'imagenes', data.documento.id).subscribe(
-                                          (res) => {
-                                            console.log(res)
-                                            this.toastr.success('Documento Creado', 'OK', {
-                                              timeOut: 3000, positionClass: 'toast-top-center'
-                                            });
-                                            this.router.navigate(['/documentos/listar']);
+        this.uploadService.addImagenes('documentos/upload', this.filesToUpload,
+          this.tokenService.getToken(), 'imagenes', data.documento.id).subscribe(
+            (res) => {
+              console.log(res)
+              this.toastr.success('Documento Creado', 'OK', {
+                timeOut: 3000, positionClass: 'toast-top-center'
+              });
+              this.router.navigate(['/documentos/listar']);
 
-                                          },
-                                          (err) => console.error("Sucedio un error")
-                                        );
+            },
+            (err) => console.error("Sucedio un error")
+          );
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
@@ -62,11 +62,6 @@ export class AgregarDocumentComponent implements OnInit {
     );
   }
 
-  public filesToUpload: Array<File>;
-    fileChangeEvent(fileInput: any){
-        this.filesToUpload = <Array<File>>fileInput.target.files;
-        console.log(this.filesToUpload);
-    }
   cargarTipoDocumentos(): void {
     this.documentoService.getTipoDocumentos(this.tokenService.getToken()).subscribe(
       data => {
@@ -76,6 +71,11 @@ export class AgregarDocumentComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    console.log(this.filesToUpload);
   }
 
 }
