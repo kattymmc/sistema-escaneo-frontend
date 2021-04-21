@@ -13,6 +13,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+PdfMakeWrapper.setFonts(pdfFonts);
 
 @NgModule({
   declarations: [

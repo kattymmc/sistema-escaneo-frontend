@@ -41,6 +41,7 @@
                             </div>
                             <div class="col-md-6 content-select">
                                 <select name="tipoDocumento" [(ngModel)]="seleccionado">
+                                    <option value='0'  disabled>Escoga un tipo...</option>
                                     <option [ngValue]="tipodocumento.id" *ngFor="let tipodocumento of tipodocumentos">
                                         {{tipodocumento.descripcion}}</option>
                                 </select>

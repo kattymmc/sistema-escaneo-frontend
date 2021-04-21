@@ -9,9 +9,12 @@
                     <li class="list-group-item"><b>Descripcion: </b>{{documento.descripcion}}</li>
                     <li class="list-group-item"><b>Tipo: </b>{{documento.tipoDocumento.descripcion}}</li>
                     <li class="list-group-item"><b>Fecha: </b>{{documento.dateCreated | date:'shortDate'}}</li>
+                    <li class="list-group-item"><button class="btn btn-outline-primary" (click)="generatePdf()">Generar PDF</button> </li>
                 </ul>
             </div>
         </div>
+
+
 
         <div style="width: 100%; display: flex; justify-content: center;">
             <div *ngFor="let imagen of documento.imagenes" style="width: 200px; margin: 20px;">

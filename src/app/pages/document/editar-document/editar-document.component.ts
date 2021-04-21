@@ -26,13 +26,16 @@ export class EditarDocumentComponent implements OnInit {
     private toastr: ToastrService,
     private uploadService: UploadService,
     private router: Router
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.documentoService.getDocumentoById(this.tokenService.getToken(), id).subscribe(
       data => {
         this.documento = data;
+        this.seleccionado = this.documento.tipoDocumento.id;
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
@@ -49,10 +52,18 @@ export class EditarDocumentComponent implements OnInit {
     const doc = new Documento(this.documento.codigoDoc, this.documento.descripcion, new TipoDocumento(this.seleccionado));
     this.documentoService.updateDocumento(this.tokenService.getToken(), id, doc).subscribe(
       data => {
-        this.toastr.success('Documento Actualizado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.router.navigate(['/documentos/listar']);
+        this.uploadService.addImagenes('documentos/upload', this.filesToUpload,
+        this.tokenService.getToken(), 'imagenes', data.documento.id).subscribe(
+          (res) => {
+            console.log(res)
+            this.toastr.success('Documento Creado', 'OK', {
+              timeOut: 3000, positionClass: 'toast-top-center'
+            });
+            this.router.navigate(['/documentos/listar']);
+
+          },
+          (err) => console.error("Sucedio un error")
+        );
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {

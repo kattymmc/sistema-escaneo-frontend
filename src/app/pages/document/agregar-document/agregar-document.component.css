@@ -76,11 +76,11 @@ i {
   margin-right: 10px;
 }
 
-select {
+/*select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-}
+}*/
 
 .content-select {
   max-width: 250px;

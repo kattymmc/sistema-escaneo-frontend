@@ -26,6 +26,8 @@
     "jquery": "^3.6.0",
     "ng2-search-filter": "^0.5.1",
     "ngx-toastr": "^13.2.1",
+    "pdfmake": "^0.1.71",
+    "pdfmake-wrapper": "^2.1.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

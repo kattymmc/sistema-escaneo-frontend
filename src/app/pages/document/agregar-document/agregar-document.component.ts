@@ -27,7 +27,7 @@ export class AgregarDocumentComponent implements OnInit {
     private documentoService: DocumentService,
     private uploadService: UploadService
   ) {
-
+    this.seleccionado=0;
   }
 
   ngOnInit(): void {

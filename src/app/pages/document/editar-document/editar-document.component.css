@@ -71,9 +71,6 @@ input:valid + .lbl-nombre:after {
   width: 100%;
 }
 
-i {
-  margin-right: 10px;
-}
 
 select {
   appearance: none;

@@ -4,7 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Documento } from 'src/app/core/models/documento';
 import { DocumentService } from 'src/app/core/services/document.service';
 import { TokenService } from 'src/app/core/services/token.service';
-//import { UploadService } from 'src/app/core/services/upload.service';
+import { UploadService } from 'src/app/core/services/upload.service';
+import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class VerDocumentComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router,
-    //private uploadService: UploadService
+    private uploadService: UploadService
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +56,7 @@ export class VerDocumentComponent implements OnInit {
     );
   }
 
-  /*eliminarImagen(id: number) {
+  eliminarImagen(id: number) {
     this.uploadService.deleteImagenById(id, this.tokenService.getToken()).subscribe(
       data => {
         this.toastr.success('Imagen Eliminada', 'OK', {
@@ -102,5 +103,17 @@ export class VerDocumentComponent implements OnInit {
         );
       }
       );
-  }*/
+  }
+
+  async generatePdf(){
+    const pdf = new PdfMakeWrapper();
+
+    for(let i = 0; i<this.documento.imagenes.length; i++){
+
+      pdf.add( await new Img(`http://169.57.99.220:32135/api/uploads/img/${this.documento.imagenes[i].nombre}`).width(550).build());
+    }
+
+
+    pdf.create().open();
+  }
 }
