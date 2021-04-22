@@ -8,7 +8,7 @@ import { Documento } from '../models/documento';
 })
 export class DocumentService {
 
-  private urlEndPoint: string = '/api/';
+  private urlEndPoint: string = 'https://salty-plains-51047.herokuapp.com/http://169.57.99.220:32135/api/';
 
   constructor(private _http: HttpClient) { }
 
