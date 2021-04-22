@@ -20,7 +20,9 @@ export class DocumentService {
   }
 
   getDocumentos(token): Observable<any> {
-    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+                                    .set('Access-Control-Allow-Origin','*')
+                                    .set('Access-Control-Allow-Methods','*');
     return this._http.get(this.urlEndPoint + 'documentos', { headers: headers });
   }
 
