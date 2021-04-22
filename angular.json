@@ -71,12 +71,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "siscan:build",
-            "proxyConfig": "proxy.config"
+            "browserTarget": "siscan:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "siscan:build:production"
+              "browserTarget": "siscan:build:production",
+              "proxyConfig": "proxy.config.json"
             }
           }
         },
