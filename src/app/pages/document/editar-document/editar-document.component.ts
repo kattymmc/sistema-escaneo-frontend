@@ -171,7 +171,7 @@ export class EditarDocumentComponent implements OnInit {
       pdf.add(await new Img(`http://169.57.99.220:32135/api/uploads/img/${this.documento.imagenes[i].nombre}`).width(550).build());
     }
 
-
+    this.loaderService.isLoading.next(false);
     pdf.create().open();
   }
 
