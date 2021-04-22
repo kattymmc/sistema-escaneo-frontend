@@ -75,8 +75,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "siscan:build:production",
-              "proxyConfig": "proxy.config.json"
+              "browserTarget": "siscan:build:production"
             }
           }
         },
