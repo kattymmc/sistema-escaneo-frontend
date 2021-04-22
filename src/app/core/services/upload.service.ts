@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UploadService {
 
-  private urlEndPoint: string = 'https://robwu.nl/http://169.57.99.220:32135/api/';
+  private urlEndPoint: string = 'http://localhost:8080/http://169.57.99.220:32135/api/';
   private urlHeroku: string = 'https://image-processing-python.herokuapp.com/api/';
 
   constructor(private _http: HttpClient){  }
