@@ -6,6 +6,7 @@ import { DocumentService } from 'src/app/core/services/document.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { UploadService } from 'src/app/core/services/upload.service';
 import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
+import { LoaderService } from '../../../core/services/loader.service';
 
 
 @Component({
@@ -25,23 +26,28 @@ export class VerDocumentComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router,
-    private uploadService: UploadService
-  ) { }
+    private uploadService: UploadService,
+    public loaderService: LoaderService
+  ) {
+    loaderService.isLoading.next(true);
+   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params.id;
-    this.documentoService.getDocumentoById(this.tokenService.getToken(), id).subscribe(
-      data => {
-        this.documento = data;
-        console.log(this.documento);
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-        this.router.navigate(['/documentos/listar']);
-      }
-    );
+    setTimeout(() => {
+      const id = this.activatedRoute.snapshot.params.id;
+      this.documentoService.getDocumentoById(this.tokenService.getToken(), id).subscribe(
+        data => {
+          this.documento = data;
+          this.loaderService.isLoading.next(false);
+        },
+        err => {
+          this.toastr.error(err.error.mensaje, 'Fail', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+          this.router.navigate(['/documentos/listar']);
+        }
+      );
+    })
   }
 
   cargarDocumento(): void {
@@ -106,6 +112,7 @@ export class VerDocumentComponent implements OnInit {
   }
 
   async generatePdf(){
+    this.loaderService.isLoading.next(true);
     const pdf = new PdfMakeWrapper();
 
     for(let i = 0; i<this.documento.imagenes.length; i++){
@@ -113,7 +120,7 @@ export class VerDocumentComponent implements OnInit {
       pdf.add( await new Img(`http://169.57.99.220:32135/api/uploads/img/${this.documento.imagenes[i].nombre}`).width(550).build());
     }
 
-
+    this.loaderService.isLoading.next(false);
     pdf.create().open();
   }
 }

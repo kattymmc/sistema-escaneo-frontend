@@ -6,6 +6,7 @@ import { TipoDocumento } from 'src/app/core/models/tipo-documento';
 import { DocumentService } from 'src/app/core/services/document.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { UploadService } from 'src/app/core/services/upload.service';
+import { LoaderService } from '../../../core/services/loader.service';
 
 @Component({
   selector: 'app-agregar-document',
@@ -25,16 +26,21 @@ export class AgregarDocumentComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private documentoService: DocumentService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    public loaderService: LoaderService
   ) {
     this.seleccionado=0;
+    loaderService.isLoading.next(true);
   }
 
   ngOnInit(): void {
-    this.cargarTipoDocumentos();
+    setTimeout(() => {
+      this.cargarTipoDocumentos();
+    })
   }
 
   onCreate(): void {
+    this.loaderService.isLoading.next(true);
     const documento = new Documento(this.codigoDoc, this.descripcion, new TipoDocumento(this.seleccionado));
     this.documentoService.addDocumento(this.tokenService.getToken(), documento).subscribe(
       data => {
@@ -47,6 +53,7 @@ export class AgregarDocumentComponent implements OnInit {
               this.toastr.success('Documento Creado', 'OK', {
                 timeOut: 3000, positionClass: 'toast-top-center'
               });
+              this.loaderService.isLoading.next(false);
               this.router.navigate(['/documentos/listar']);
 
             },
@@ -66,6 +73,7 @@ export class AgregarDocumentComponent implements OnInit {
     this.documentoService.getTipoDocumentos(this.tokenService.getToken()).subscribe(
       data => {
         this.tipodocumentos = data;
+        this.loaderService.isLoading.next(false);
       },
       err => {
         console.log(err);

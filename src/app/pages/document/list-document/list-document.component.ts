@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/core/services/token.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoaderService } from '../../../core/services/loader.service';
 
 @Component({
   selector: 'app-list-document',
@@ -21,16 +22,22 @@ export class ListDocumentComponent implements OnInit {
     private tokenService: TokenService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-  ) { }
+    public loaderService: LoaderService
+  ) {
+    loaderService.isLoading.next(true);
+  }
 
   ngOnInit(): void {
-    this.cargarDocumentos();
+    setTimeout(() => {
+      this.cargarDocumentos();
+    })
   }
 
   cargarDocumentos(): void {
     this.documentoService.getDocumentos(this.tokenService.getToken()).subscribe(
       data => {
         this.documentos = data;
+        this.loaderService.isLoading.next(false);
       },
       err => {
         console.log(err);
@@ -39,6 +46,7 @@ export class ListDocumentComponent implements OnInit {
   }
 
   eliminarDocumento(id: number) {
+    this.loaderService.isLoading.next(true);
     this.documentoService.deleteDocumentoById(this.tokenService.getToken(), id).subscribe(
       data => {
         this.toastr.success('Producto Eliminado', 'OK', {

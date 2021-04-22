@@ -6,6 +6,8 @@ import { TipoDocumento } from 'src/app/core/models/tipo-documento';
 import { DocumentService } from 'src/app/core/services/document.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { UploadService } from 'src/app/core/services/upload.service';
+import { LoaderService } from '../../../core/services/loader.service';
+
 
 @Component({
   selector: 'app-editar-document',
@@ -25,29 +27,34 @@ export class EditarDocumentComponent implements OnInit {
     private tokenService: TokenService,
     private toastr: ToastrService,
     private uploadService: UploadService,
-    private router: Router
+    private router: Router,
+    public loaderService: LoaderService
   ) {
-
+    loaderService.isLoading.next(true);
   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params.id;
-    this.documentoService.getDocumentoById(this.tokenService.getToken(), id).subscribe(
-      data => {
-        this.documento = data;
-        this.seleccionado = this.documento.tipoDocumento.id;
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-        this.router.navigate(['/documentos/listar']);
-      }
-    );
-    this.cargarTipoDocumentos();
+    setTimeout(() => {
+      const id = this.activatedRoute.snapshot.params.id;
+      this.documentoService.getDocumentoById(this.tokenService.getToken(), id).subscribe(
+        data => {
+          this.documento = data;
+          this.seleccionado = this.documento.tipoDocumento.id;
+          this.loaderService.isLoading.next(false);
+        },
+        err => {
+          this.toastr.error(err.error.mensaje, 'Fail', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+          this.router.navigate(['/documentos/listar']);
+        }
+      );
+      this.cargarTipoDocumentos();
+    })
   }
 
   onUpdate(): void {
+    this.loaderService.isLoading.next(true);
     const id = this.activatedRoute.snapshot.params.id;
     const doc = new Documento(this.documento.codigoDoc, this.documento.descripcion, new TipoDocumento(this.seleccionado));
     this.documentoService.updateDocumento(this.tokenService.getToken(), id, doc).subscribe(
@@ -59,6 +66,7 @@ export class EditarDocumentComponent implements OnInit {
             this.toastr.success('Documento Creado', 'OK', {
               timeOut: 3000, positionClass: 'toast-top-center'
             });
+            this.loaderService.isLoading.next(false);
             this.router.navigate(['/documentos/listar']);
 
           },
@@ -90,6 +98,7 @@ export class EditarDocumentComponent implements OnInit {
     this.documentoService.getDocumentoById(this.tokenService.getToken(), id).subscribe(
       data => {
         this.documento = data;
+        this.loaderService.isLoading.next(false);
       },
       err => {
         console.log(err);
@@ -98,6 +107,7 @@ export class EditarDocumentComponent implements OnInit {
   }
 
   eliminarImagen(id: number) {
+    this.loaderService.isLoading.next(true);
     this.uploadService.deleteImagenById(id, this.tokenService.getToken()).subscribe(
       data => {
         this.toastr.success('Imagen Eliminada', 'OK', {
@@ -114,6 +124,7 @@ export class EditarDocumentComponent implements OnInit {
   }
 
   async procesarImagen(id: number, name: string) {
+    this.loaderService.isLoading.next(true);
     let blob1 = await fetch('http://169.57.99.220:32135/api/uploads/img/' + name).then(r => r.blob())
       .then(blobFile => {
         let file = new File([blobFile], name, { type: "image/*" });
