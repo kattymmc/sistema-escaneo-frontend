@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Img, PdfMakeWrapper } from 'pdfmake-wrapper';
 import { Documento } from 'src/app/core/models/documento';
 import { TipoDocumento } from 'src/app/core/models/tipo-documento';
 import { DocumentService } from 'src/app/core/services/document.service';
@@ -69,9 +70,9 @@ export class EditarDocumentComponent implements OnInit {
             this.loaderService.isLoading.next(false);
             this.router.navigate(['/documentos/listar']);
 
-          },
-          (err) => console.error("Sucedio un error")
-        );
+            },
+            (err) => console.error("Sucedio un error")
+          );
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
@@ -160,6 +161,18 @@ export class EditarDocumentComponent implements OnInit {
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     console.log(this.filesToUpload);
+  }
+
+  async generatePdf() {
+    const pdf = new PdfMakeWrapper();
+
+    for (let i = 0; i < this.documento.imagenes.length; i++) {
+
+      pdf.add(await new Img(`http://169.57.99.220:32135/api/uploads/img/${this.documento.imagenes[i].nombre}`).width(550).build());
+    }
+
+
+    pdf.create().open();
   }
 
 }

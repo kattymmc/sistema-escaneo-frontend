@@ -10,23 +10,8 @@ h1 {
   text-align: center;
 }
 
-.btn-customer {
-  width: 100px;
-  color: white;
-  background-color: #ff806d;
-}
-
-.btn-customer {
-  border-radius: 5px;
-  margin-left: 15%;
-  margin-top: 5%;
-  margin-bottom: 15%;
-}
-
-.btn-customer:hover {
-  background-color: #ffffff;
-  color: #ff806d;
-  border: 1px solid #ff806d;
+.space {
+  margin: 5% 15%;
 }
 
 .close {
