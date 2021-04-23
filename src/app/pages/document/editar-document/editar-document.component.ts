@@ -126,7 +126,7 @@ export class EditarDocumentComponent implements OnInit {
 
   async procesarImagen(id: number, name: string) {
     this.loaderService.isLoading.next(true);
-    let blob1 = await fetch('http://169.57.99.220:32135/api/uploads/img/' + name).then(r => r.blob())
+    let blob1 = await fetch('http://localhost:8080/http://169.57.99.220:32135/api/uploads/img/' + name).then(r => r.blob())
       .then(blobFile => {
         let file = new File([blobFile], name, { type: "image/*" });
 
